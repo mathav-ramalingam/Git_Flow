@@ -2,6 +2,6 @@ import React from 'react'
 
 export const Delete = () => {
   return (
-    <div>Delete</div>
+    <div>branch 2 delete</div>
   )
 }
