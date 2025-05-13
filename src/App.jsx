@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
   const [tasks, setTasks] = useState([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
   const addTask = () => {
     if (input.trim()) {
       setTasks([...tasks, input.trim()]);
-      setInput('');
+      setInput("");
     }
+
+    const deleteTask = (index) => {
+      const newTasks = tasks.filter((_, i) => i !== index);
+      setTasks(newTasks);
+    };
   };
 
   return (
@@ -25,6 +30,11 @@ function App() {
       <ul>
         {tasks.map((task, idx) => (
           <li key={idx}>{task}</li>
+        ))}
+        {tasks.map((task, idx) => (
+          <li key={idx}>
+            {task} <button onClick={() => deleteTask(idx)}>Delete</button>
+          </li>
         ))}
       </ul>
     </div>
